@@ -33,6 +33,7 @@
     }
     
     // Switch view controllers.
+    // Animation setting
     [UIView beginAnimations:@"View Flip" context:NULL];
     [UIView setAnimationDuration:0.4];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -45,6 +46,7 @@
         self.blueViewController.view.frame = self.view.frame;
         [self switchViewFormViewController:self.yellowViewController toViewController:self.blueViewController];
     }
+    // All actions will be made animation until send this message(commitAnimations) to UIView.
     [UIView commitAnimations];
 }
 
