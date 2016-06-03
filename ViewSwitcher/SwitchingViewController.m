@@ -33,13 +33,19 @@
     }
     
     // Switch view controllers.
+    [UIView beginAnimations:@"View Flip" context:NULL];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     if (!self.yellowViewController.view.superview) {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
         self.yellowViewController.view.frame = self.view.frame;
         [self switchViewFormViewController:self.blueViewController toViewController:self.yellowViewController];
     } else {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
         self.blueViewController.view.frame = self.view.frame;
         [self switchViewFormViewController:self.yellowViewController toViewController:self.blueViewController];
     }
+    [UIView commitAnimations];
 }
 
 - (void)switchViewFormViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
